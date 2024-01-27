@@ -292,25 +292,25 @@ class ProfissionalController extends Controller
  }
 
 
-
  public function redefinirSenha(Request $request){
     $profissional = Profissional::where('email', $request->email)->first();
     if (!isset($profissional)){
         return response()->json([
             'status' => false,
-            'message' => "Profissional não encontrado"
+            'message' => "profissional não encontrado"
         ]);
     }
 
-    $profissional->password = Hash::make($profissional->cpf);
+
+    $novaSenha = $request->novaSenha; //  campo no formulário  chamado de "novaSenha"
+    $profissional->password = Hash::make($novaSenha);
     $profissional->update();    
 
     return response()->json([
-        'status' => false,
+        'status' => true,
         'message' => "Sua senha foi atualizada"
     ]);
 }
-
 
 
 

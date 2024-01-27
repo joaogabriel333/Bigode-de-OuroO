@@ -253,7 +253,25 @@ return response()->json([
 
 
 
+public function redefinirSenha(Request $request){
+    $profissional = Adiministrador::where('email', $request->email)->first();
+    if (!isset($profissional)){
+        return response()->json([
+            'status' => false,
+            'message' => "Adiministrador não encontrado"
+        ]);
+    }
 
+
+    $novaSenha = $request->novaSenha; //  campo no formulário  chamado de "novaSenha"
+    $profissional->password = $novaSenha;
+    $profissional->update();    
+
+    return response()->json([
+        'status' => true,
+        'message' => "Sua senha foi atualizada"
+    ]);
+}
 
 
 

@@ -320,6 +320,7 @@ class ClienteController extends Controller
 
 
 
+
  public function redefinirSenha(Request $request){
     $Cliente = Cliente::where('email', $request->email)->first();
     if (!isset($Cliente)){
@@ -329,14 +330,19 @@ class ClienteController extends Controller
         ]);
     }
 
-    $Cliente->password = Hash::make($Cliente->cpf);
+
+    $novaSenha = $request->novaSenha; //  campo no formulário  chamado de "novaSenha"
+    $Cliente->password = Hash::make($novaSenha);
     $Cliente->update();    
 
     return response()->json([
-        'status' => false,
+        'status' => true,
         'message' => "Sua senha foi atualizada"
     ]);
 }
+
+
+
 
 
 

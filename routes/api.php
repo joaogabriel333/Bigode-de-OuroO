@@ -45,12 +45,12 @@ Route::post('cep', [ClienteController::class, 'pesquisarPorCep']);
 Route::put('updateCliente', [ClienteController::class,  'updateCliente']);
 Route::get('visualizarCadastroCliente', [ClienteController::class, 'visualizarCadastroCliente']);
 Route::get('pesquisarPorIdCleinte/{id}', [ClienteController::class, 'pesquisarPorIdCleinte']);
-Route::post('senha/clientes',[clientecontroller::class, 'redefinirSenha']);
+Route::put('senha/clientes',[clientecontroller::class, 'redefinirSenha']);
 //-------------------------------------------------------------------------------------------------------------
 
 
 //PROFISSIONAL:OK
-Route::post('senha/profissional',[Profissionalcontroller::class, 'redefinirSenha']);
+Route::put('senha/profissional',[Profissionalcontroller::class, 'redefinirSenha']);
 Route::post('cadastroProfissional', [ProfissionalController::class, 'cadastroProfissional']);
 Route::post('pesquisarPorProfissional', [ProfissionalController::class, 'pesquisarPorProfissionalNome']);
 Route::get('visualizarProfissional', [ProfissionalController::class, 'visualizarProfissional']);
@@ -84,15 +84,14 @@ Route::get('visualizar/TipoPagame/nto', [TipoDePagamentoController::class,'visua
 
 //-------------------------------------PERFIS:------------------------------------------------------------------
 //ADM:
-
+Route::post('adm/cpf/pesquisar', [AdiministradorController::class, 'pesquisarPorCpf']);
 Route::post('adm/cadastro', [AdiministradorController::class,  'cadastroAdiministrador']);
-
 Route::delete('adm/excluir/adm/{id}', [AdiministradorController::class, 'deletarAdiministrador']);
 Route::post('adm/email/pesquisar', [AdiministradorController::class, 'PesquisarPorEmailAdiministrador']);
 Route::put('adm/updateAdiministrador', [AdiministradorController::class,  'updateAdiministrador']);
 Route::get('adm/visualizar/Cadastro/Adiministrador', [AdiministradorController::class, 'visualizarCadastroAdiministrador']);
 Route::get('adm/pesquisar/Por/Id/Adiministrador/{id}', [AdiministradorController::class, 'pesquisarPorIdAdiministrador']);
-
+Route::put('redefinir/senha/Adiministrador',[AdiministradorController::class, 'redefinirSenha']);
 
 
 
