@@ -27,7 +27,7 @@ class TipoPagamentoFormRequest extends FormRequest
 
                     'nome' => 'required|unique:tipo_pagamentos,nome|max:120|min:2',
                     'taxa'=>'required|max:120|min:3',
-                   
+                   'status'=>'required|max:120|min:3',
 
             ];
     }
@@ -54,8 +54,9 @@ class TipoPagamentoFormRequest extends FormRequest
                     'nome.max' => 'O campo nome deve conter  no maximo 120 caracteres',
                     'nome.min' => 'O campo nome deve conter no minimo 2 caracteres',
                     'nome.unique' => 'Nome já foi cadastrado, informe outro.',
-
-
+                    
+                    'status.required' => 'O compo status é obrigatorio.',
+                    
 
                     
 

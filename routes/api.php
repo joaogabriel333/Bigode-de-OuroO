@@ -79,6 +79,8 @@ Route::post('pesquisar/nome/TipoPagame/nto', [TipoDePagamentoController::class,'
 Route::post('excluir/TipoPagame/nto', [TipoDePagamentoController::class,'deletarpagamento']);
 Route::delete('delete/TipoPagame/to/{id}', [TipoDePagamentoController::class, 'deletarpagamento']);
 Route::get('visualizar/TipoPagame/nto', [TipoDePagamentoController::class,'visualizarCadastroTipoPagamento']);
+Route::get('visualizar/TipoPagame/nto/habilitado', [TipoDePagamentoController::class,'visualizarCadastroTipoPagamentoHabilitado']);
+Route::get('visualizar/TipoPagame/nto/desabilitado', [TipoDePagamentoController::class,'visualizarCadastroTipoPagamentoDesabilitado']);
 
 
 //-------------------------------------PERFIS:------------------------------------------------------------------

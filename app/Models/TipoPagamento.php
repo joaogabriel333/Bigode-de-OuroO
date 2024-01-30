@@ -12,7 +12,8 @@ class TipoPagamento extends Model
     protected $fillable = [
 
         'nome',
-        'taxa'
+        'taxa',
+        'status'
  
 
     ];

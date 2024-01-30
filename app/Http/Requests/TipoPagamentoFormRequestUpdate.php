@@ -29,7 +29,7 @@ class TipoPagamentoFormRequestUpdate extends FormRequest
 
                     'nome' => 'required|max:120|min:2',
                     'taxa'=>'required|max:120|min:3',
-                   
+                    'status'=>'required|max:120|min:3',
 
             ];
     }
@@ -57,7 +57,7 @@ class TipoPagamentoFormRequestUpdate extends FormRequest
                     'nome.min' => 'O campo nome deve conter no minimo 2 caracteres',
                 
 
-
+                    'status.required' => 'O compo status é obrigatorio.',
 
                     
 
