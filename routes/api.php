@@ -72,9 +72,8 @@ Route::post('buscarPorIdProfissional{profissional_id}', [AgendaController::class
 route::get('find/agendamento/{id}', [AgendaController::class, 'pesquisarPorId']);
 route::put('update/agendamento', [AgendaController::class, 'update']);
 
-
+//Tipo de pagamento:
 Route::put('editar/tipo/pagamento', [TipoDePagamentoController::class,  'updatepagamento']);
-
 Route::post('cadastro/TipoPagame/nto', [TipoDePagamentoController::class,'cadastroTipoPagamento']);
 Route::post('pesquisar/nome/TipoPagame/nto', [TipoDePagamentoController::class,'pesquisarPorTipoPagamento']);
 Route::post('excluir/TipoPagame/nto', [TipoDePagamentoController::class,'deletarpagamento']);
@@ -92,11 +91,6 @@ Route::put('adm/updateAdiministrador', [AdiministradorController::class,  'updat
 Route::get('adm/visualizar/Cadastro/Adiministrador', [AdiministradorController::class, 'visualizarCadastroAdiministrador']);
 Route::get('adm/pesquisar/Por/Id/Adiministrador/{id}', [AdiministradorController::class, 'pesquisarPorIdAdiministrador']);
 Route::put('redefinir/senha/Adiministrador',[AdiministradorController::class, 'redefinirSenha']);
-
-
-
-
-
 
 
   //ADM:CADASTRO DE CLIENTES: OK
@@ -145,7 +139,13 @@ Route::get('adm/visualizarServico', [ServicoController::class, 'visualizarServic
 Route::get('adm/pesquisarPorIdServico/{id}', [ServicoController::class, 'pesquisarPorIdServico']);
 
 
-
+//ADM:Tipo de pagamento:
+Route::put('adm/editar/tipo/pagamento', [TipoDePagamentoController::class,  'updatepagamento']);
+Route::post('adm/cadastro/TipoPagame/nto', [TipoDePagamentoController::class,'cadastroTipoPagamento']);
+Route::post('adm/pesquisar/nome/TipoPagame/nto', [TipoDePagamentoController::class,'pesquisarPorTipoPagamento']);
+Route::post('adm/excluir/TipoPagame/nto', [TipoDePagamentoController::class,'deletarpagamento']);
+Route::delete('adm/delete/TipoPagame/to/{id}', [TipoDePagamentoController::class, 'deletarpagamento']);
+Route::get('adm/visualizar/TipoPagame/nto', [TipoDePagamentoController::class,'visualizarCadastroTipoPagamento']);
 
 
 

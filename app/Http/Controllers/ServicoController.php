@@ -151,7 +151,7 @@ class ServicoController extends Controller
 
         return response()->json([
             'status' => true,
-            'message' => 'Serviço ataulizado'
+            'message' => 'Serviço atualizado'
         ]);
     }
 
@@ -164,7 +164,7 @@ class ServicoController extends Controller
         if (!isset($servico)) {
             return response()->josn([
                 'status' => false,
-                'message' => "Usuário não encontrado"
+                'message' => "Serviço não encontrado"
             ]);
         }
 
@@ -187,7 +187,7 @@ class ServicoController extends Controller
    
             return response()->json([
                 'status' => false,
-                'message' => 'não há registros registrados'
+                'message' => 'não há registros no sistema'
             ]);
         }
         return response()->json([

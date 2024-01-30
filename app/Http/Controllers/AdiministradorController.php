@@ -141,7 +141,7 @@ $Adiministrador->update();
 
 return response()->json([
     'status' => true,
-    'message' => 'Adiministrador ataulizado'
+    'message' => 'Adiministrador atualizado'
 ]);
 }
 
@@ -154,7 +154,7 @@ public function deletarAdiministrador($Adiministrador)
  if (!isset($Adiministrador)) {
      return response()->json([
          'status' => false,
-         'message' => "Usuário não encontrado"
+         'message' => "Adiministrador não encontrado"
      ]);
  }
 
@@ -182,7 +182,7 @@ public function visualizarCadastroAdiministrador()
 
      return response()->json([
          'status' => false,
-         'message' => 'não há registros registrados'
+         'message' => 'não há registros no sistema'
      ]);
  }
  return response()->json([

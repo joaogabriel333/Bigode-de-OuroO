@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\ProfissionalFormRequest;
 use App\Http\Requests\ProfissionalFormRequestUpdate;
+use App\Models\Agenda;
 use App\Models\Profissional;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
@@ -146,7 +147,7 @@ class ProfissionalController extends Controller
      if (!isset($profissional)) {
          return response()->json([
              'status' => false,
-             'message' => 'Serviço não encontrado'
+             'message' => 'Profissional não encontrado'
          ]);
      }
 
@@ -217,33 +218,38 @@ class ProfissionalController extends Controller
 
      return response()->json([
          'status' => true,
-         'message' => 'Serviço ataulizado'
+         'message' => 'Profissional ataulizado'
      ]);
- 
+    
 }
 
 
  //FUNÇÃO DE EXCLUIR
 
- public function deletarProfissional($id)
+ public function  deletarProfissional($id)
  {
     $profissional = Profissional::find($id);
 
-     if (!isset($id)) {
-         return response()->json([
-             'status' => false,
-             'message' => "Usuário não encontrado"
-         ]);
-     }
+    if(!isset($profissional)){
+        return response() -> json([
+            'status' => false,
+            'message' => "Profissional não encontrado"
+        ]);
+    }
+    $profissional_agendamento = Agenda::where('profissional_id', $id)->get();
+    if(count($profissional_agendamento) > 0){
+        return response()->json([
+        'status' => false,
+        'message' => "Não foi possível excluir, pois o profissional possui agendamentos registrados."
+        ]);
+    }
 
-     $profissional->delete();
-
-     return response()->json(([
-         'status' => true,
-         'message' =>  "Serviço excluido com sucesso"
-     ]));
- }
-
+    $profissional->delete();
+    return response() -> json([
+        'status' => true,
+        'message' => "Profissional excluído com sucesso"
+    ]);
+}
  
  public function visualizarProfissional()
  {
@@ -253,7 +259,7 @@ class ProfissionalController extends Controller
 
          return response()->json([
              'status' => false,
-             'message' => 'não há registros registrados'
+             'message' => ' não há registros no sistema'
          ]);
      }
      return response()->json([
@@ -280,7 +286,7 @@ class ProfissionalController extends Controller
      if ($profissional == null) {
          return response()->json([
              'status' => false,
-             'message' => "Usuário não encontrado"
+             'message' => "Profissional não encontrado"
          ]);
      }
 
@@ -297,7 +303,7 @@ class ProfissionalController extends Controller
     if (!isset($profissional)){
         return response()->json([
             'status' => false,
-            'message' => "profissional não encontrado"
+            'message' => "Profissional não encontrado"
         ]);
     }
 

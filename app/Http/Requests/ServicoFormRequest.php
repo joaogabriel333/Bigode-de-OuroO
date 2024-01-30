@@ -45,6 +45,8 @@ class ServicoFormRequest extends FormRequest
             'nome.required'=> 'O campo nome é obrigatorio',
     'nome.max'=> 'O campo nome deve conter no maximo 80 caracteres',
     'nome.min'=> 'O campo nome deve conter no manimo 5 caracteres',
+    'nome.unique'=> 'Nome já cadastrado , informe outro',
+    
     'preco.required'=> 'Preço obrigatorio',
     'preco.decimal'=> 'Preço deve conter só nuemros ex:20.00 ',
     

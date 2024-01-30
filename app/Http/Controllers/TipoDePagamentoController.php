@@ -51,7 +51,7 @@ class TipoDePagamentoController extends Controller
 
         return response()->json([
             'status' => false,
-            'data' => "pagamento não encontrado"
+            'data' => "Tipo de pagamento não encontrado"
         ]);
     }
 
@@ -67,7 +67,7 @@ public function deletarpagamento($pagamento)
  if (!isset($pagamento)) {
      return response()->json([
          'status' => false,
-         'message' => "Usuário não encontrado"
+         'message' => "Tipo de pagamento não encontrado"
      ]);
  }
 
@@ -75,7 +75,7 @@ public function deletarpagamento($pagamento)
 
  return response()->json(([
      'status' => true,
-     'message' =>  "pagamento excluido com sucesso"
+     'message' =>  "Tipo de pagamento excluido com sucesso"
  ]));
 }
 
@@ -95,7 +95,7 @@ $pagamento = TipoPagamento::find($request->id);
 if (!isset($pagamento)) {
     return response()->json([
         'status' => false,
-        'message' => 'pagamento não encontrado'
+        'message' => 'Tipo de pagamento não encontrado'
     ]);
 }
 

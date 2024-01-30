@@ -172,7 +172,7 @@ class ClienteController extends Controller
     if (!isset($cliente)) {
         return response()->json([
             'status' => false,
-            'message' => 'cliente não encontrado'
+            'message' => 'Cliente não encontrado'
         ]);
     }
 
@@ -229,7 +229,7 @@ class ClienteController extends Controller
 
     return response()->json([
         'status' => true,
-        'message' => 'cliente ataulizado'
+        'message' => 'Cliente atualizado'
     ]);
 }
 
@@ -242,7 +242,7 @@ class ClienteController extends Controller
      if (!isset($cliente)) {
          return response()->json([
              'status' => false,
-             'message' => "Usuário não encontrado"
+             'message' => "Cliente não encontrado"
          ]);
      }
 
@@ -250,7 +250,7 @@ class ClienteController extends Controller
 
      return response()->json(([
          'status' => true,
-         'message' =>  "Serviço excluido com sucesso"
+         'message' =>  "Cliente excluido com sucesso"
      ]));
  }
 
@@ -270,7 +270,7 @@ class ClienteController extends Controller
 
          return response()->json([
              'status' => false,
-             'message' => 'não há registros registrados'
+             'message' => 'Não há registros no sistema'
          ]);
      }
      return response()->json([
@@ -302,7 +302,7 @@ class ClienteController extends Controller
      if ($cliente == null) {
          return response()->json([
              'status' => false,
-             'message' => "Usuário não encontrado"
+             'message' => "Cliente não encontrado"
          ]);
      }
 

@@ -32,7 +32,7 @@ class AgendaController extends Controller
 
 
 
-
+  
        
         $profissional=Profissional::find($request->profissional_id);
         if(isset($profissional)){
@@ -58,6 +58,9 @@ class AgendaController extends Controller
                 "message" => "Profissional nao encontrado"
             ], 200);
         }
+
+
+        
     }
 
 
@@ -129,7 +132,7 @@ public function update(AgendaFormRequestUpdate $request){
     if(!isset($agendamento)){
         return response()->json([
             "status" => false,
-            "message" => "Agendamento não encontrado"
+            "message" => "Agenda não encontrado"
         ]);
     }
 $profissional=Profissional::find($request->profissional_id);
@@ -147,7 +150,7 @@ if(!isset($profissional)){return response()->json([
 
     return response()->json([
         "status" => true,
-        "message" => "agendamento atualizado"
+        "message" => "Agenda atualizado"
     ]) ;
 }
 
@@ -172,7 +175,7 @@ if(!isset($profissional)){return response()->json([
         if (!isset($agendas)) {
             return response()->json([
                 'status' => false,
-                'message' => "Agendamento não encontrado"
+                'message' => "Agenda não encontrado"
             ]);
         }
 
@@ -180,7 +183,7 @@ if(!isset($profissional)){return response()->json([
 
         return response()->json(([
             'status' => true,
-            'message' =>  "Agendamento excluido com sucesso"
+            'message' =>  "Agenda excluido com sucesso"
         ]));
     }
 
@@ -198,7 +201,7 @@ if(!isset($profissional)){return response()->json([
    
             return response()->json([
                 'status' => false,
-                'message' => 'não há registros registrados'
+                'message' => 'Não há registros no sistema'
             ]);
         }
         return response()->json([
