@@ -41,9 +41,6 @@ class ProfissionalFormRequest extends FormRequest
             'salario' => 'required|decimal:2'
         ];
     }
-
-
-
     public function failedValidation(Validator $validator)
     {
         throw new HttpResponseException(response()->json([
@@ -51,8 +48,6 @@ class ProfissionalFormRequest extends FormRequest
             'error' => $validator->errors()
         ]));
     }
-
-
     public function messages()
     {
         return [

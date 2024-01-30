@@ -24,36 +24,35 @@ class ServicoFormRequestUpdate extends FormRequest
     public function rules(): array
     {
         return [
-            'nome'=>'max:80|min:5,',
-            'preco'=>'decimal:2',
-            'duracao'=>'numeric',  
-            'descricao'=>'max:200|min:10',
-            
+            'nome' => 'max:80|min:5,',
+            'preco' => 'decimal:2',
+            'duracao' => 'numeric',
+            'descricao' => 'max:200|min:10',
         ];
     }
-
-    public function failedValidation(Validator $validator){
-        throw new HttpResponseException( response()->json([
-            'success'=> false,
-            'error'=>$validator->errors()
+    public function failedValidation(Validator $validator)
+    {
+        throw new HttpResponseException(response()->json([
+            'success' => false,
+            'error' => $validator->errors()
         ]));
     }
 
+    public function messages()
+    {
+        return [
+            'nome.required' => 'O campo nome é obrigatorio',
+            'nome.max' => 'O campo nome deve conter no maximo 80 caracteres',
+            'nome.min' => 'O campo nome deve conter no minimo 5 caracteres',
+            'preco.required' => 'Preço obrigatorio',
 
-    public function messages(){
-        return[
-            'nome.required'=> 'O campo nome é obrigatorio',
-    'nome.max'=> 'O campo nome deve conter no maximo 80 caracteres',
-    'nome.min'=> 'O campo nome deve conter no minimo 5 caracteres',
-    'preco.required'=> 'Preço obrigatorio',
-    
-    'duracao.required'=>'Duracao obrigatorio',
-    'duracao.required'=>'Duracao é só pode conter número',
-    
-    'descricao.required'=>'Descrição obrigatorio',
-    'descricao.max'=>'Descricao deve conter no maximo 200 caracteres',
-    'descricao.min'=>'Descricao deve conter no manimo 0 caracteres'
-    
+            'duracao.required' => 'Duracao obrigatorio',
+            'duracao.required' => 'Duracao é só pode conter número',
+
+            'descricao.required' => 'Descrição obrigatorio',
+            'descricao.max' => 'Descricao deve conter no maximo 200 caracteres',
+            'descricao.min' => 'Descricao deve conter no manimo 0 caracteres'
+
         ];
     }
 }

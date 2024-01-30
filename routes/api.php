@@ -45,12 +45,12 @@ Route::post('cep', [ClienteController::class, 'pesquisarPorCep']);
 Route::put('updateCliente', [ClienteController::class,  'updateCliente']);
 Route::get('visualizarCadastroCliente', [ClienteController::class, 'visualizarCadastroCliente']);
 Route::get('pesquisarPorIdCleinte/{id}', [ClienteController::class, 'pesquisarPorIdCleinte']);
-Route::put('senha/clientes',[clientecontroller::class, 'redefinirSenha']);
+Route::put('senha/clientes', [clientecontroller::class, 'redefinirSenha']);
 //-------------------------------------------------------------------------------------------------------------
 
 
 //PROFISSIONAL:OK
-Route::put('senha/profissional',[Profissionalcontroller::class, 'redefinirSenha']);
+Route::put('senha/profissional', [Profissionalcontroller::class, 'redefinirSenha']);
 Route::post('cadastroProfissional', [ProfissionalController::class, 'cadastroProfissional']);
 Route::post('pesquisarPorProfissional', [ProfissionalController::class, 'pesquisarPorProfissionalNome']);
 Route::get('visualizarProfissional', [ProfissionalController::class, 'visualizarProfissional']);
@@ -74,13 +74,13 @@ route::put('update/agendamento', [AgendaController::class, 'update']);
 
 //Tipo de pagamento:
 Route::put('editar/tipo/pagamento', [TipoDePagamentoController::class,  'updatepagamento']);
-Route::post('cadastro/TipoPagame/nto', [TipoDePagamentoController::class,'cadastroTipoPagamento']);
-Route::post('pesquisar/nome/TipoPagame/nto', [TipoDePagamentoController::class,'pesquisarPorTipoPagamento']);
-Route::post('excluir/TipoPagame/nto', [TipoDePagamentoController::class,'deletarpagamento']);
+Route::post('cadastro/TipoPagame/nto', [TipoDePagamentoController::class, 'cadastroTipoPagamento']);
+Route::post('pesquisar/nome/TipoPagame/nto', [TipoDePagamentoController::class, 'pesquisarPorTipoPagamento']);
+Route::post('excluir/TipoPagame/nto', [TipoDePagamentoController::class, 'deletarpagamento']);
 Route::delete('delete/TipoPagame/to/{id}', [TipoDePagamentoController::class, 'deletarpagamento']);
-Route::get('visualizar/TipoPagame/nto', [TipoDePagamentoController::class,'visualizarCadastroTipoPagamento']);
-Route::get('visualizar/TipoPagame/nto/habilitado', [TipoDePagamentoController::class,'visualizarCadastroTipoPagamentoHabilitado']);
-Route::get('visualizar/TipoPagame/nto/desabilitado', [TipoDePagamentoController::class,'visualizarCadastroTipoPagamentoDesabilitado']);
+Route::get('visualizar/TipoPagame/nto', [TipoDePagamentoController::class, 'visualizarCadastroTipoPagamento']);
+Route::get('visualizar/TipoPagame/nto/habilitado', [TipoDePagamentoController::class, 'visualizarCadastroTipoPagamentoHabilitado']);
+Route::get('visualizar/TipoPagame/nto/desabilitado', [TipoDePagamentoController::class, 'visualizarCadastroTipoPagamentoDesabilitado']);
 
 
 //-------------------------------------PERFIS:------------------------------------------------------------------
@@ -92,10 +92,10 @@ Route::post('adm/email/pesquisar', [AdiministradorController::class, 'PesquisarP
 Route::put('adm/updateAdiministrador', [AdiministradorController::class,  'updateAdiministrador']);
 Route::get('adm/visualizar/Cadastro/Adiministrador', [AdiministradorController::class, 'visualizarCadastroAdiministrador']);
 Route::get('adm/pesquisar/Por/Id/Adiministrador/{id}', [AdiministradorController::class, 'pesquisarPorIdAdiministrador']);
-Route::put('redefinir/senha/Adiministrador',[AdiministradorController::class, 'redefinirSenha']);
+Route::put('redefinir/senha/Adiministrador', [AdiministradorController::class, 'redefinirSenha']);
 
 
-  //ADM:CADASTRO DE CLIENTES: OK
+//ADM:CADASTRO DE CLIENTES: OK
 Route::delete('adm/excluir/{id}', [ClienteController::class, 'deletar']);
 Route::post('adm/cadastroCliente', [ClienteController::class,  'cadastroCliente']);
 Route::post('adm/buscarNomecliente', [ClienteController::class, 'pesquisarPorCliente']);
@@ -106,10 +106,10 @@ Route::post('adm/cep', [ClienteController::class, 'pesquisarPorCep']);
 Route::put('adm/updateCliente', [ClienteController::class,  'updateCliente']);
 Route::get('adm/visualizarCadastroCliente', [ClienteController::class, 'visualizarCadastroCliente']);
 Route::get('adm/pesquisarPorIdCleinte/{id}', [ClienteController::class, 'pesquisarPorIdCleinte']);
-Route::post('adm/senha/clientes',[clientecontroller::class, 'redefinirSenha']);
+Route::post('adm/senha/clientes', [clientecontroller::class, 'redefinirSenha']);
 
 //ADM:PROFISSIONAL:OK
-Route::post('adm/senha/profissional',[Profissionalcontroller::class, 'redefinirSenha']);
+Route::post('adm/senha/profissional', [Profissionalcontroller::class, 'redefinirSenha']);
 Route::post('adm/cadastroProfissional', [ProfissionalController::class, 'cadastroProfissional']);
 Route::post('adm/pesquisarPorProfissional', [ProfissionalController::class, 'pesquisarPorProfissionalNome']);
 Route::get('adm/visualizarProfissional', [ProfissionalController::class, 'visualizarProfissional']);
@@ -143,33 +143,8 @@ Route::get('adm/pesquisarPorIdServico/{id}', [ServicoController::class, 'pesquis
 
 //ADM:Tipo de pagamento:
 Route::put('adm/editar/tipo/pagamento', [TipoDePagamentoController::class,  'updatepagamento']);
-Route::post('adm/cadastro/TipoPagame/nto', [TipoDePagamentoController::class,'cadastroTipoPagamento']);
-Route::post('adm/pesquisar/nome/TipoPagame/nto', [TipoDePagamentoController::class,'pesquisarPorTipoPagamento']);
-Route::post('adm/excluir/TipoPagame/nto', [TipoDePagamentoController::class,'deletarpagamento']);
+Route::post('adm/cadastro/TipoPagame/nto', [TipoDePagamentoController::class, 'cadastroTipoPagamento']);
+Route::post('adm/pesquisar/nome/TipoPagame/nto', [TipoDePagamentoController::class, 'pesquisarPorTipoPagamento']);
+Route::post('adm/excluir/TipoPagame/nto', [TipoDePagamentoController::class, 'deletarpagamento']);
 Route::delete('adm/delete/TipoPagame/to/{id}', [TipoDePagamentoController::class, 'deletarpagamento']);
-Route::get('adm/visualizar/TipoPagame/nto', [TipoDePagamentoController::class,'visualizarCadastroTipoPagamento']);
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+Route::get('adm/visualizar/TipoPagame/nto', [TipoDePagamentoController::class, 'visualizarCadastroTipoPagamento']);

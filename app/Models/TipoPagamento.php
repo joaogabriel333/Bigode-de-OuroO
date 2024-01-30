@@ -8,13 +8,10 @@ use Illuminate\Database\Eloquent\Model;
 class TipoPagamento extends Model
 {
     use HasFactory;
-    
-    protected $fillable = [
 
+    protected $fillable = [
         'nome',
         'taxa',
         'status'
- 
-
     ];
 }

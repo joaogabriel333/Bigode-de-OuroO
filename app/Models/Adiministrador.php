@@ -8,16 +8,11 @@ use Illuminate\Database\Eloquent\Model;
 class Adiministrador extends Model
 {
     use HasFactory;
-
-
-
     protected $fillable = [
-
         'nome',
         'email',
         'cpf',
         'password'
 
     ];
-
 }

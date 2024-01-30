@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Profissional extends Model
 {
-    protected $fillable =[
+    protected $fillable = [
         'nome',
         'celular',
         'email',
@@ -24,5 +24,4 @@ class Profissional extends Model
         'password',
         'salario'
     ];
-
 }

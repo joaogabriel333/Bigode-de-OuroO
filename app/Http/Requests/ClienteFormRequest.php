@@ -39,27 +39,18 @@ class ClienteFormRequest extends FormRequest
                         'cep' => 'required|max:8|min:8',
                         'complemento' => 'required|max:150|',
                         'password' => 'required|'
-
                 ];
         }
-
-
-
         public function failedValidation(Validator $validator)
         {
-
                 throw new HttpResponseException(response()->json([
-                                'success' => false,
-                                'error' => $validator->errors()
-                        ]));
+                        'success' => false,
+                        'error' => $validator->errors()
+                ]));
         }
-
-
         public function messages()
         {
                 return [
-
-
                         //NOME
                         'nome.required' => 'O campo nome é obrigatorio',
                         'nome.max' => 'O campo nome deve conter  no maximo 120 caracteres',
@@ -75,7 +66,7 @@ class ClienteFormRequest extends FormRequest
                         'email.required' => 'O email celular é obrigatorio',
                         'email.unique' => 'Email já cadastrado informe outro email',
                         'email.max' => 'O email celular de conter 120 caracteres',
- 
+
                         //CPF
                         'cpf.required' => 'O campo cpf é obrigatorio',
                         'cpf.max' => 'O campo cpf deve ter no maximo 11 caracteres',
@@ -125,11 +116,6 @@ class ClienteFormRequest extends FormRequest
 
                         //SENHA       
                         'password.required' => 'O campo senha é obrigatorio'
-
-
-
-
-
                 ];
         }
 }

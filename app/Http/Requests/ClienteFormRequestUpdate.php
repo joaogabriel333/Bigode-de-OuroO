@@ -25,10 +25,10 @@ class clienteFormRequestUpdate extends FormRequest
     {
         return [
             'nome' => 'required|max:120|min:5',
-            'celular' => 'required|max:11|min:10|unique:clientes,celular,'. $this->id,
-            'email' => 'required|email|unique:clientes,email,'. $this->id,
+            'celular' => 'required|max:11|min:10|unique:clientes,celular,' . $this->id,
+            'email' => 'required|email|unique:clientes,email,' . $this->id,
             'cpf' => 'required|max:11|min:11|unique:clientes,cpf,' . $this->id,
-            'dataNascimento' => 'required|date', 
+            'dataNascimento' => 'required|date',
             'cidade' => 'required|max:120',
             'estado' => 'required|max:2|min:2',
             'pais' => 'required|max:80',
@@ -48,9 +48,10 @@ class clienteFormRequestUpdate extends FormRequest
             'error' => $validator->errors()
         ]));
     }
-    public function messages(){
+    public function messages()
+    {
 
-        return[
+        return [
             'nome.required' => 'o nome é obrigatorio',
             'nome.max' => 'o campo nome deve contar no maximo 120 caracteres',
             'nome.min' => 'o campo nome deve contar no minimo 5 caracteres',

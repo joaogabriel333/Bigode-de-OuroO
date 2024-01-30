@@ -25,16 +25,14 @@ class AgendaFormRequest extends FormRequest
     {
         return [
 
-        'profissional_id' => 'required',
-        'cliente_id' => '',
-        'servico_id' => '',
-        'dataHora' => 'required|date',
-        'tipo_pagamento' => 'max:20|min:3',
-        'valor' => '|decimal:2',
-        
+            'profissional_id' => 'required',
+            'cliente_id' => '',
+            'servico_id' => '',
+            'dataHora' => 'required|date',
+            'tipo_pagamento' => 'max:20|min:3',
+            'valor' => '|decimal:2',
         ];
     }
- 
     public function failedValidation(Validator $validator)
     {
         throw new HttpResponseException(response()->json([
@@ -42,14 +40,11 @@ class AgendaFormRequest extends FormRequest
             'error' => $validator->errors()
         ]));
     }
-    public function messages(){
-
-        return[
+    public function messages()
+    {
+        return [
             'profissional_id.required' => 'o profissional é obrigatorio',
-            
             'dataHora.required' => 'o campo data/hora é obrigatorio',
-            
         ];
     }
-    
 }

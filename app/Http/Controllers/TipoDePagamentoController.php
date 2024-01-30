@@ -15,13 +15,10 @@ class TipoDePagamentoController extends Controller
 
     public function cadastroTipoPagamento(TipoPagamentoFormRequest $request)
     {
-
         $pagamento = TipoPagamento::create([
             'nome' => $request->nome,
             'taxa' => $request->taxa,
             'status' => $request->status
-
-
         ]);
         return response()->json([
             "success" => true,
@@ -29,130 +26,80 @@ class TipoDePagamentoController extends Controller
             "data" => $pagamento
         ], 200);
     }
-
-
-
     //PESQUISA POR NOME
-
     public function pesquisarPorTipoPagamento(Request $request)
     {
-
-
         $pagamento = TipoPagamento::where('nome', 'like', '%' . $request->nome . '%')->get();
-
-
         if (count($pagamento)) {
-
             return response()->json([
                 'status' => true,
                 'data' => $pagamento
             ]);
         }
-
-
         return response()->json([
             'status' => false,
             'data' => "Tipo de pagamento não encontrado"
         ]);
     }
-
-
-
-
     //FUNÇÃO DE EXCLUIR
-
     public function deletarpagamento($pagamento)
     {
         $pagamento = TipoPagamento::find($pagamento);
-
         if (!isset($pagamento)) {
             return response()->json([
                 'status' => false,
                 'message' => "Tipo de pagamento não encontrado"
             ]);
         }
-
         $pagamento->delete();
-
         return response()->json(([
             'status' => true,
             'message' =>  "Tipo de pagamento excluido com sucesso"
         ]));
     }
-
-
-
-
-
-
     //ATUALIZAÇÃO DE pagamento
-
     public function updatepagamento(TipoPagamentoFormRequestUpdate $request)
     {
-
-
         $pagamento = TipoPagamento::find($request->id);
-
         if (!isset($pagamento)) {
             return response()->json([
                 'status' => false,
                 'message' => 'Tipo de pagamento não encontrado'
             ]);
         }
-
-
         if (isset($request->nome)) {
             $pagamento->nome = $request->nome;
         }
-
-
-
         if (isset($request->taxa)) {
             $pagamento->taxa = $request->taxa;
         }
-
         if (isset($request->status)) {
             $pagamento->status = $request->status;
         }
-
         $pagamento->update();
-
         return response()->json([
             'status' => true,
             'message' => 'Tipo de pagamento ataulizado'
         ]);
     }
-
-
-
-
-
-
-
     public function visualizarCadastroTipoPagamento()
     {
-     $pagamento = TipoPagamento::all();
-    
-     if (!isset($pagamento)) {
-    
-         return response()->json([
-             'status' => false,
-             'message' => 'Não há registros no sitema'
-         ]);
-     }
-     return response()->json([
-         'status' => true,
-         'data' => $pagamento
-     ]);
+        $pagamento = TipoPagamento::all();
+        if (!isset($pagamento)) {
+            return response()->json([
+                'status' => false,
+                'message' => 'Não há registros no sitema'
+            ]);
+        }
+        return response()->json([
+            'status' => true,
+            'data' => $pagamento
+        ]);
     }
-
-
-
     //Visualizar Cadastro Tipo Pagamentob Habilitado
     public function visualizarCadastroTipoPagamentoHabilitado()
     {
         $pagamento = TipoPagamento::where('status', 'habilitado')->get();
-
         if ($pagamento->count() >= 0) {
             return response()->json([
                 'status' => true,
@@ -164,15 +111,10 @@ class TipoDePagamentoController extends Controller
             'message' => 'Não há registros no sitema'
         ]);
     }
-
-
-
     //Visualizar Tipo Pagamento Desabilitado
-
     public function visualizarCadastroTipoPagamentoDesabilitado()
     {
         $pagamento = TipoPagamento::where('status', 'desabilitado')->get();
-
         if ($pagamento->count() >= 0) {
             return response()->json([
                 'status' => true,
@@ -184,8 +126,4 @@ class TipoDePagamentoController extends Controller
             'message' => 'Não há registros no sitema'
         ]);
     }
-
-
-
-
 }
