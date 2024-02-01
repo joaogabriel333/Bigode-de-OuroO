@@ -26,7 +26,7 @@ class TipoPagamentoFormRequestUpdate extends FormRequest
 
         {
                 return [
-                        'nome' => 'required|max:120|min:2',
+                        'nome' => 'required||max:120|min:2',
                         'taxa' => 'required|max:120|min:3',
                         'status' => 'required|max:120|min:3',
                 ];
