@@ -26,11 +26,13 @@ class AgendaController extends Controller
             ], 400);
         }
     
-        $horarioJaCadastrado = Agenda::where('dataHora', $request->dataHora)->exists();
+        $horarioJaCadastrado = Agenda::where('dataHora', $request->dataHora)
+            ->where('profissional_id', $request->profissional_id)
+            ->exists();
         if ($horarioJaCadastrado) {
             return response()->json([
                 "success" => false,
-                "message" => "Este horário já está cadastrado a um profissional"
+                "message" => "Este horário já está cadastrado para você"
             ], 400);
         }
     
