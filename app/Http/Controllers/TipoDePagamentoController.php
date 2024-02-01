@@ -98,7 +98,7 @@ class TipoDePagamentoController extends Controller
     }
 
     // Salva a atualização no banco de dados
-    $pagamento->save();
+    $pagamento->update();
 
     return response()->json([
         'status' => true,
