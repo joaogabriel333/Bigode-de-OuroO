@@ -51,7 +51,7 @@ class ServicoFormRequestUpdate extends FormRequest
 
             'descricao.required' => 'Descrição obrigatorio',
             'descricao.max' => 'Descricao deve conter no maximo 200 caracteres',
-            'descricao.min' => 'Descricao deve conter no manimo 0 caracteres'
+            'descricao.min' => 'Descricao deve conter no manimo 10 caracteres'
 
         ];
     }
