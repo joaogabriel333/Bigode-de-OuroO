@@ -62,7 +62,35 @@ Route::delete('deletarProficional/{id}', [ProfissionalController::class, 'deleta
 Route::get('pesquisarPorIdProficional/{id}', [ProfissionalController::class, 'pesquisarPorIdProficional']);
 
 
-//CADASTROD DE agendamento
+
+
+//PROFISSIONAL:Cliente
+Route::delete('profissional/excluir/{id}', [ClienteController::class, 'deletar']);
+Route::post('profissional/cadastroCliente', [ClienteController::class,  'cadastroCliente']);
+Route::post('profissional/buscarNomecliente', [ClienteController::class, 'pesquisarPorCliente']);
+Route::post('profissional/CPF', [ClienteController::class, 'pesquisarPorCpf']);
+Route::post('profissional/telefone', [ClienteController::class, 'PesquisarPorCelular']);
+Route::post('profissional/email', [ClienteController::class, 'PesquisarPorEmail']);
+Route::post('profissional/cep', [ClienteController::class, 'pesquisarPorCep']);
+Route::put('profissional/updateCliente', [ClienteController::class,  'updateCliente']);
+Route::get('profissional/visualizarCadastroCliente', [ClienteController::class, 'visualizarCadastroCliente']);
+Route::get('profissional/pesquisarPorIdCleinte/{id}', [ClienteController::class, 'pesquisarPorIdCleinte']);
+Route::put('profissional/senha/clientes', [clientecontroller::class, 'redefinirSenha']);
+
+
+
+//PROFISSIONAL: CADASTROD DE Horarios
+Route::post('profissional/cadastroAgenda', [AgendaController::class, 'cadastroAgenda']);
+Route::delete('profissional/deleteAgenda/{id}', [AgendaController::class, 'excluir']);
+Route::get('profissional/visualizarAgenda', [AgendaController::class, 'visualizarAgenda']);
+Route::post('profissional/buscarPorData/', [AgendaController::class, 'buscarPorData']);
+Route::post('profissional/buscarPorIdProfissional{profissional_id}', [AgendaController::class, 'buscarPorIdProfissional']);
+route::get('profissional/find/agendamento/{id}', [AgendaController::class, 'pesquisarPorId']);
+route::put('profissional/update/agendamento', [AgendaController::class, 'update']);
+
+
+
+//CADASTROD DE Horarios
 
 Route::post('cadastroAgenda', [AgendaController::class, 'cadastroAgenda']);
 Route::delete('deleteAgenda/{id}', [AgendaController::class, 'excluir']);

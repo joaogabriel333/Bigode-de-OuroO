@@ -15,12 +15,8 @@ class AgendaController extends Controller
 {
     // AGENDA, :
 
-
     public function cadastroAgenda(AgendaFormRequest $request)
     {
-
-
-
         $dataHoraAgendamento = new DateTime($request->dataHora);
         $dataAtual = Carbon::now('America/Sao_Paulo');
         if ($dataHoraAgendamento < $dataAtual) {
@@ -29,6 +25,15 @@ class AgendaController extends Controller
                 "message" => "Não é possível cadastrar um horário antes do dia atual e horario atual"
             ], 400);
         }
+    
+        $horarioJaCadastrado = Agenda::where('dataHora', $request->dataHora)->exists();
+        if ($horarioJaCadastrado) {
+            return response()->json([
+                "success" => false,
+                "message" => "Este horário já está cadastrado a um profissional"
+            ], 400);
+        }
+    
         $profissional = Profissional::find($request->profissional_id);
         if (isset($profissional)) {
             $agendas = Agenda::create([
@@ -48,7 +53,8 @@ class AgendaController extends Controller
             ], 200);
         }
     }
-
+    
+    
     //VISUALIZAÇÃO DE por data
     public function buscarPorData(Request $request)
     {
