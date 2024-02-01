@@ -183,17 +183,19 @@ class ClienteController extends Controller
         ]));
     }
     public function visualizarCadastroCliente()
-    {
+    {        
         $cliente = Cliente::all();
-        if (!isset($cliente)) {
+
+        if (count($cliente)> 0) {
+          
             return response()->json([
-                'status' => false,
-                'message' => 'Não há registros no sistema'
-            ]);
+                'status' => true,
+                'data' => $cliente
+            ]) ;
         }
         return response()->json([
-            'status' => true,
-            'data' => $cliente
+            'status' => false,
+            'message' => 'Não há registros no sistema'
         ]);
     }
     public function pesquisarPorIdCleinte($id)

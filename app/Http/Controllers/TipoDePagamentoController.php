@@ -59,33 +59,56 @@ class TipoDePagamentoController extends Controller
     }
     //ATUALIZAÇÃO DE pagamento
     public function updatepagamento(TipoPagamentoFormRequestUpdate $request)
-    {
-        $pagamento = TipoPagamento::find($request->id);
-        if (!isset($pagamento)) {
-            return response()->json([
-                'status' => false,
-                'message' => 'Tipo de pagamento não encontrado'
-            ]);
-        }
-        if (isset($request->nome)) {
-            $pagamento->nome = $request->nome;
-        }
-        if (isset($request->taxa)) {
-            $pagamento->taxa = $request->taxa;
-        }
-        if (isset($request->status)) {
-            $pagamento->status = $request->status;
-        }
-        $pagamento->update();
+{
+    $pagamento = TipoPagamento::find($request->id);
+    if (!$pagamento) {
         return response()->json([
-            'status' => true,
-            'message' => 'Tipo de pagamento ataulizado'
+            'status' => false,
+            'message' => 'Tipo de pagamento não encontrado'
         ]);
     }
+
+    // Verifica se o novo nome está em uso por outro registro ou pelo mesmo ID
+    if (isset($request->nome) && $request->nome !== $pagamento->nome) {
+        $existingPayment = TipoPagamento::where('nome', $request->nome)
+            ->where(function ($query) use ($request) {
+                $query->where('id', '!=', $request->id)
+                    ->orWhereNull('id');
+            })->first();
+
+        if ($existingPayment) {
+            if ($existingPayment->id) {
+                return response()->json([
+                    'status' => false,
+                    'message' => 'O nome especificado já está em uso por outro tipo de pagamento'
+                ]);
+            } else {
+                // Lidar com o caso em que o registro existente tem um ID nulo
+            }
+        }
+        $pagamento->nome = $request->nome;
+    }
+
+    // Atualiza os outros campos
+    if (isset($request->taxa)) {
+        $pagamento->taxa = $request->taxa;
+    }
+    if (isset($request->status)) {
+        $pagamento->status = $request->status;
+    }
+
+    // Salva a atualização no banco de dados
+    $pagamento->save();
+
+    return response()->json([
+        'status' => true,
+        'message' => 'Tipo de pagamento atualizado'
+    ]);
+}
     public function visualizarCadastroTipoPagamento()
     {
         $pagamento = TipoPagamento::all();
-        if (!isset($pagamento)) {
+        if (count($pagamento)<=0) {
             return response()->json([
                 'status' => false,
                 'message' => 'Não há registros no sitema'
@@ -100,7 +123,7 @@ class TipoDePagamentoController extends Controller
     public function visualizarCadastroTipoPagamentoHabilitado()
     {
         $pagamento = TipoPagamento::where('status', 'habilitado')->get();
-        if ($pagamento->count() >= 0) {
+        if ($pagamento->count() > 0) {
             return response()->json([
                 'status' => true,
                 'data' => $pagamento
@@ -115,7 +138,7 @@ class TipoDePagamentoController extends Controller
     public function visualizarCadastroTipoPagamentoDesabilitado()
     {
         $pagamento = TipoPagamento::where('status', 'desabilitado')->get();
-        if ($pagamento->count() >= 0) {
+        if ($pagamento->count() > 0) {
             return response()->json([
                 'status' => true,
                 'data' => $pagamento
