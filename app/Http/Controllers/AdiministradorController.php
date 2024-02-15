@@ -9,6 +9,9 @@ use App\Models\Adiministrador;
 use Illuminate\Support\Facades\Hash;
 class AdiministradorController extends Controller
 {
+
+
+      
     public function cadastroAdiministrador(AdiministradorUserRequest $request)
     {
         $Adiministrador = Adiministrador::create([
